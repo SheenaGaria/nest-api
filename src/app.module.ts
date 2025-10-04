@@ -9,15 +9,9 @@ import { AuthModule } from './auth/auth.module';
       type: 'postgres',
       host: 'localhost',
       port: 5432,
-<<<<<<< HEAD
       username: 'postgres',
       password: 'Nextgen',
       database: 'nestdb',
-=======
-      username: 'postgres', 
-      password: 'Nextgen', 
-      database: 'nestdb', 
->>>>>>> 1b7c95f0118f749ee35e85ffc637264d00c8eba3
       autoLoadEntities: true,
       synchronize: true,
     }),
