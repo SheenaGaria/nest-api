@@ -9,9 +9,9 @@ import { AuthModule } from './auth/auth.module';
       type: 'postgres',
       host: 'localhost',
       port: 5432,
-      username: 'postgres', // 👈 change if your username is different
-      password: 'Nextgen', // 👈 replace with your PostgreSQL password
-      database: 'nestdb', // 👈 make sure you have created this DB
+      username: 'postgres',
+      password: 'Nextgen',
+      database: 'nestdb',
       autoLoadEntities: true,
       synchronize: true,
     }),
