@@ -20,19 +20,26 @@ export class UsersService {
     return this.repo.find();
   }
 
-  async findOne(id: string) {
-    const user = await this.repo.findOne({ where: { id } });
+  async findOne(id: string | number) {
+    const user = await this.repo.findOne({ where: { id: +id } });
     if (!user) throw new NotFoundException('User not found');
     return user;
   }
 
-  async update(id: string, attrs: Partial<User>) {
+  async update(id: string | number, attrs: Partial<User>) {
     const user = await this.findOne(id);
     Object.assign(user, attrs);
     return this.repo.save(user);
   }
 
-  async remove(id: string) {
-    return this.repo.delete(id);
+  async remove(id: string | number) {
+    const result = await this.repo.delete(id);
+    if (result.affected === 0) throw new NotFoundException('User not found');
+    return { deleted: true, id };
+  }
+
+  // Added for AuthService
+  async findByEmail(email: string) {
+    return this.repo.findOne({ where: { email } });
   }
 }
